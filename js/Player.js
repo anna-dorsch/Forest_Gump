@@ -58,7 +58,7 @@ class Player {
     this.speedX *= 0.9; // friction
     this.speedY *= 0.9; // friction
 
-    this.gravity += 5;
+    // this.gravity += 5;
     if (player.y > 800) {
       console.log("game over");
     }
@@ -73,7 +73,7 @@ class Player {
       this.gravity = 0;
     }
   }
-
+  // make collision so it stops when it touchs the surface of the platform
   newPo() {
     this.gravitySpeed += this.gravity;
     this.x += this.speedX;

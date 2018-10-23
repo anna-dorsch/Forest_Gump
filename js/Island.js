@@ -1,18 +1,20 @@
 var img = new Image();
 
 img.onload = function() {
-  console.log(this.height);
+  console.log(this.width);
 };
 img.src = "images/gras1.png";
 
 class Island {
-  constructor(ctx, url, x) {
+  constructor(ctx, url, x, y) {
     this.x = x;
-    this.y = canvas.height - 230;
+    this.y = y;
     //this.height = 400;
-    this.width = 686;
     this.img = new Image();
     this.img.src = url;
+    this.img.onload = () => {
+      this.width = this.img.width;
+    };
     this.ctx = ctx;
     this.current = false;
   }
@@ -22,11 +24,11 @@ class Island {
   }
 
   moveLeft() {
-    this.x += 10;
+    this.x += 20;
   }
 
   moveRight() {
-    this.x -= 10;
+    this.x -= 20;
   }
 
   update() {

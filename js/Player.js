@@ -50,8 +50,8 @@ class Player {
 
   jump() {
     this.isJumping = true;
-    this.speedY = -20;
-    // this.speedX += 10;
+    this.speedY = -15;
+    this.speedX += 10;
     // this.gravity = 0.1;
   }
 
@@ -68,28 +68,23 @@ class Player {
   }
 
   update() {
-    //check limits:
-    // if (this.x < 0) {
-    //   this.x = 2;
-    // }
     if (this.y < 0) {
       this.y = 2;
     }
-    // if (this.y > 453) {
-    //   this.y = 453;
-    // }
 
-    //this.speedY += 1.5; // gravity
     this.x += this.speedX;
     this.y += this.speedY;
     this.speedX *= 0.9; // friction
-    // this.speedY *= 0.9; // friction
+    //this.speedY *= 0.9; // friction
     this.speedY += this.gravity;
 
     //this.gravity += 0.8;
+
     if (this.y >= canvas.height) {
+      falling.play();
       console.log("game over");
-      //location.reload();
+      counter = 0;
+      location.reload();
     }
 
     if (player.x >= canvas.width) {
@@ -102,19 +97,6 @@ class Player {
 
   checkBottom(platform) {
     // // Collision
-    // if (
-    //   this.bottom() > platform.top() &&
-    //   platform.bottom() > this.top() &&
-    //   this.center().x > platform.left() &&
-    //   platform.right() > this.center().x &&
-    //   this.bottom() - platform.top() < 30
-    // ) {
-    //   // console.log("collision");
-    //   this.y = platform.top() - this.height;
-    //   this.speedY = 0;
-    //   this.isJumping = false;
-    // }
-
     // Collision with the right
     if (
       platform.left() < this.right() &&
@@ -145,22 +127,29 @@ class Player {
       this.speedY = 0;
       this.isJumping = false;
     }
-
-    // if (this.bottom() <= platform.y && this.x <= platform.width) {
-    //   this.isJumping = false;
-    //   this.speedY = 0;
-    //   this.gravitySpeed = 0.5;
-    //   this.gravity = 0.5;
-    // } else if (
-    //   this.y + this.height <= platform.y &&
-    //   this.x <= platform.width &&
-    //   this.isJumping === true
-    // ) {
-    //   //this.isJumping = true;
-    //   this.speedY = 0;
-    //   this.gravitySpeed = 0.1;
-    //   this.gravity = 0.1;
-    // }
+  }
+  // if ((this.y + (this.height) < money.y ||
+  //        (this.y > money.y + (money.height)) ||
+  //        (this.x + (this.width) < money.x) ||
+  //        ( this.x > money.x + (money.width))) {
+  // }
+  // return crash;
+  checkTreasure(money) {
+    if (
+      this.y + this.height < money.y ||
+      this.y > money.y + money.height ||
+      this.x + this.width - 40 < money.x ||
+      this.x > money.x + money.width
+    ) {
+      return false;
+    } else {
+      counter = counter + 1;
+      console.log("this", counter);
+      document.getElementById("overlay").innerHTML =
+        "Your Score:" + " " + counter;
+      sound1.play();
+      return true;
+    }
   }
   // make collision so it stops when it touchs the surface of the platform
   newPo() {

@@ -1,10 +1,3 @@
-var img = new Image();
-
-img.onload = function() {
-  console.log(this.width);
-};
-img.src = "images/gras1.png";
-
 class Island {
   constructor(ctx, url, x, y) {
     this.x = x;
@@ -57,4 +50,3 @@ class Island {
 }
 
 // var randomIsland = island[Math.floor(Math.random() * island.length)];
-// console.log(randomIsland);

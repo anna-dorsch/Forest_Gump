@@ -28,3 +28,26 @@
   font-size: 14px;
   text-align: center;
 } */
+
+.container {
+  position: relative;
+}
+#container canvas,
+#overlay {
+  position: absolute;
+}
+
+#overlay {
+  font-family: "Press Start 2P", cursive;
+  color: white;
+  margin-left: 1045px;
+  width: 400px;
+  height: 10px;
+  text-align: center;
+  margin-top: 30px;
+  font-size: 20px;
+}
+
+#music {
+  display: none;
+}

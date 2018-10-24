@@ -4,8 +4,8 @@ var canvas = document.querySelector("canvas");
 var ctx = canvas.getContext("2d");
 var width = canvas.width;
 var height = canvas.height;
+var debug = false;
 var island = [
-  "images/gras1.png",
   "images/gras2.png",
   "images/gras3.png",
   "images/gras4.png",
@@ -19,8 +19,8 @@ var frameCounter = 0;
 var bg = new Background(ctx, "images/Background.png", 0.5);
 var player = new Player(ctx, "images/deer.png");
 var grassBackgrounds = [
-  new Island(ctx, "images/gras1.png", 0, canvas.height - 230),
-  new Island(ctx, "images/gras2.png", 900, canvas.height - 75)
+  new Island(ctx, "images/gras1.png", 0, canvas.height - 220),
+  new Island(ctx, "images/gras2.png", 900, canvas.height - 175)
   // new Island(ctx, "images/gras3.png", 2000)
 ];
 
@@ -37,7 +37,8 @@ document.onkeydown = function(e) {
       player.moveRight();
       grassBackgrounds.forEach(grassBackground => grassBackground.moveRight());
       break;
-    case 32:
+    case 38: // up
+    case 32: // space
       if (player.isJumping == false) player.jump();
       break;
   }
@@ -48,7 +49,16 @@ setInterval(function() {
   drawEverything();
 }, 1000 / 60);
 
+function drawEverything() {
+  ctx.clearRect(0, 0, width, height);
+  bg.draw();
+  grassBackgrounds.forEach(grassBackground => grassBackground.draw());
+  player.draw();
+}
+
 function update() {
+  bg.update();
+  player.update();
   if (
     grassBackgrounds[grassBackgrounds.length - 1].x +
       grassBackgrounds[grassBackgrounds.length - 1].width <=
@@ -58,33 +68,19 @@ function update() {
     newGrass();
   }
 
-  bg.update();
-  player.update();
+  // bg.update();
+  // player.update();
 
-  grassBackgrounds.map(function(grass, i) {
-    if (
-      grass.x <= player.x &&
-      grass.x + grass.width >= player.x + player.width
-    ) {
-      grass.current = true;
-    } else {
-      grass.current = false;
-    }
-    if (grass.current) {
-      player.checkBottom(grass);
-    } else {
-      // player.falling();
-    }
+  grassBackgrounds.forEach(function(grass, i) {
+    player.checkBottom(grass);
+
+    //else {
+    //   // player.falling();
+    // }
   });
 
   // grass.update();
-}
-
-function drawEverything() {
-  ctx.clearRect(0, 0, width, height);
-  bg.draw();
-  grassBackgrounds.forEach(grassBackground => grassBackground.draw());
-  player.draw();
+  // console.log(player.gravity);
 }
 
 function newGrass() {
@@ -97,3 +93,8 @@ function newGrass() {
   //   grassBackgrounds.push(grass);
   // }
 }
+
+// function checkCollision(){
+//   if (player)
+
+// }

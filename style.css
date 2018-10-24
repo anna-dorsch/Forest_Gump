@@ -2,3 +2,29 @@
   position: absolute;
   margin-top: 145px;
 }
+
+/* .menu {
+  width: 1136px;
+  height: 640px;
+  margin: 100px auto;
+  background-color: #419d78;
+  visibility: 1;
+  display: block;
+  position: relative;
+}
+
+#background {
+  display: block;
+  background-position-x: 0;
+  background-position-y: 0;
+}
+
+#start {
+  margin: 100px auto;
+  width: 200px;
+  height: 50px;
+  position: relative;
+  border-radius: 10px;
+  font-size: 14px;
+  text-align: center;
+} */

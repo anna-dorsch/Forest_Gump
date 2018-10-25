@@ -8,20 +8,25 @@
   <title>Forest Gump</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
 </head>
 
 <body>
   <audio id="music" src="audio/birds.flac" preload="audo"></audio>
   <div id="container">
-
-    <!-- <div>
-    <span class="menu"></span>
-    <button id="start">Start Game</button>
-
-  </div> -->
-
     <canvas id="background" width="1420" height="760"></canvas>
     <div id="overlay">Your Score: 0</div>
+    <span id="transparent"></span>
+    <span id="menu"></span>
+    <span id="high-score">
+      <h1>High Score</h1>
+    </span>
+    <span id="welcome">
+      <h1>Hi Dear,</h1>
+      <p>we are so happy to welcome you. <br>Start the Game and help Forest Gump to collect the Items, but be aware of
+        the stones, they are not very yummy</p>
+    </span>
+    <button id="start-button">Start Game</button>
   </div>
 
   <script type="text/javascript" src="js/Treasure.js"></script>

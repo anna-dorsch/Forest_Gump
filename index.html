@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 
 <body>
@@ -16,23 +17,43 @@
   <div id="container">
     <canvas id="background" width="1420" height="760"></canvas>
     <div id="overlay">Your Score: 0</div>
-    <span id="transparent"></span>
-    <span id="menu"></span>
-    <span id="high-score">
-      <h1>High Score</h1>
-    </span>
-    <span id="welcome">
-      <h1>Hi Dear,</h1>
-      <p>we are so happy to welcome you. <br>Start the Game and help Forest Gump to collect the Items, but be aware of
-        the stones, they are not very yummy</p>
-    </span>
-    <button id="start-button">Start Game</button>
+
+    <div class="menuWrap">
+      <span id="transparent" class="toHide"></span>
+      <span id="menu" class="toHide"></span>
+      <span id="high-score">
+        <h1 class="toHide">High Score</h1>
+      </span>
+      <span id="welcome">
+        <h1 class="toHide">Hi Dear,</h1>
+        <p class="toHide">we are so happy to welcome you. <br>Start the Game and help Forest Gump to collect the Items,
+          but be aware of
+          the stones, they are not very yummy</p>
+      </span>
+      <button id="start-button" class="box-shadow toHide">Start Game</button>
+    </div>
+
+    <div>
+      <span id="gameOver"></span>
+
+    </div>
+
+
+
   </div>
 
   <script type="text/javascript" src="js/Treasure.js"></script>
   <script type="text/javascript" src="js/Island.js"></script>
   <script type="text/javascript" src="js/Player.js"></script>
   <script type="text/javascript" src="js/Background.js"></script>
+
+  <!-- <script>
+    $(".start-button").click(function () {
+      $(".start-button").fadeOut(2000);
+    });
+  </script> -->
+
+
   <script type="text/javascript" src="js/main.js"></script>
 </body>
 

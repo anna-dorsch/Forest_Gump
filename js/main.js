@@ -140,7 +140,25 @@ function newTreasure() {
     )
   );
 }
-console.log(counter);
+
+document.getElementById("start-button").addEventListener("click", function() {
+  var element = document.getElementById("start-button");
+  element.classList.toggle("box-shadow");
+
+  setTimeout(function() {
+    var elementsToHide = document.querySelectorAll(".toHide");
+
+    for (var i = 0, max = elementsToHide.length; i < max; i++) {
+      elementsToHide[i].style.display = "none";
+    }
+  }, 400);
+});
+
+// $("start.button").click(function() {
+//   $("start.button").fadeOut("slow");
+// });
+
+// console.log(counter);
 
 // function checkCollision(){
 //   if (player)

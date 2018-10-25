@@ -14,6 +14,14 @@ class Player {
     this.gravity = 0.5;
     this.gravitySpeed = 0;
     this.isJumping = false;
+    this.hasFallen = false;
+  }
+
+  startPos() {
+    {
+      this.x = 60;
+      this.y = 460;
+    }
   }
 
   center() {
@@ -78,15 +86,6 @@ class Player {
     //this.speedY *= 0.9; // friction
     this.speedY += this.gravity;
 
-    //this.gravity += 0.8;
-
-    if (this.y >= canvas.height) {
-      falling.play();
-      console.log("game over");
-      counter = 0;
-      location.reload();
-    }
-
     if (player.x >= canvas.width) {
       player.x = 0;
       console.log("next canvas");
@@ -141,14 +140,27 @@ class Player {
       this.x + this.width - 40 < money.x ||
       this.x > money.x + money.width
     ) {
-      return false;
+      // counter--;
+      // return false;
+      // } else if ((money.type = reducePoints)) {
+      // counter--;
+      //   return false;
     } else {
-      counter = counter + 1;
-      console.log("this", counter);
-      document.getElementById("overlay").innerHTML =
-        "Your Score:" + " " + counter;
-      sound1.play();
-      return true;
+      if (money.type === "addPoints") {
+        counter = counter + 1;
+        console.log("this", counter);
+        console.log(money.type);
+        document.getElementById("overlay").innerHTML =
+          "Your Score:" + " " + counter;
+        sound1.play();
+        return true;
+      } else {
+        counter--;
+        document.getElementById("overlay").innerHTML =
+          "Your Score:" + " " + counter;
+        crash.play();
+        return true;
+      }
     }
   }
   // make collision so it stops when it touchs the surface of the platform

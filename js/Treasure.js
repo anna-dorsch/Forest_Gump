@@ -1,12 +1,12 @@
 class Treasure {
-  constructor(ctx, url, x, y, width, height) {
+  constructor(ctx, url, x, y, width, height, type) {
     this.height = height;
     this.width = width;
     this.x = x;
     this.y = y;
     this.img = new Image();
     this.img.src = url;
-
+    this.type = type;
     // this.img.onload = () => {
     //   this.width = this.img.width;
     // };

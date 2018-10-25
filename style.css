@@ -32,7 +32,6 @@
   border-radius: 10px;
   text-align: center;
   border: none;
-  /* box-shadow: 4px 4px 10px #60656f; */
   font-family: "Playfair Display SC", serif;
   font-size: 20px;
   background-color: rgba(65, 157, 120, 1);
@@ -40,7 +39,22 @@
   display: block;
 }
 
-#start-button:hover {
+#restart-button {
+  margin: 550px 210px 100px 865px;
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+  text-align: center;
+  border: none;
+  font-family: "Playfair Display SC", serif;
+  font-size: 20px;
+  background-color: rgba(65, 157, 120, 1);
+  color: white;
+  display: none;
+}
+
+#start-button,
+#restart-button:hover {
   cursor: pointer;
 }
 
@@ -108,23 +122,70 @@ p,
 #transparent,
 #welcome h1,
 #welcome p,
-#high-score h1 {
+#high-score h1,
+#overlay2,
+#gameOver,
+#restart-button,
+.end p,
+#transparent2 {
   position: absolute;
 }
 
 #overlay {
-  /* font-family: "Press Start 2P", cursive; */
   font-family: "Playfair Display SC", serif;
   color: white;
-  margin-left: 1045px;
-  width: 400px;
+  margin-left: 1200px;
+  width: 150px;
   height: 10px;
-  text-align: center;
+  text-align: right;
   margin-top: 30px;
+
+  font-size: 20px;
+  display: block;
+}
+
+#transparent2 {
+  width: 1420px;
+  height: 800px;
+  background-color: rgba(255, 255, 255, 0.7);
+  display: none;
+}
+
+#overlay2 {
+  font-family: "Playfair Display SC", serif;
+  color: white;
+  margin-left: 1200px;
+  width: 150px;
+  height: 10px;
+  text-align: right;
+  margin-top: 60px;
   font-size: 20px;
   display: block;
 }
 
 #music {
+  display: none;
+}
+
+#gameOver {
+  width: 1000px;
+  height: 500px;
+  margin: 150px 0px 0px 210px;
+  background-color: rgba(65, 157, 120, 0.6);
+  /* visibility: 1; */
+  border-radius: 10px;
+  display: none;
+}
+
+.toShow {
+  display: block;
+}
+
+.end p {
+  font-size: 25px;
+  margin: 270px 285px 130px 785px;
+  text-align: center;
+  width: 350px;
+  height: 200px;
   display: none;
 }

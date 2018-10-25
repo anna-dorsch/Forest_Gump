@@ -17,6 +17,7 @@
   <div id="container">
     <canvas id="background" width="1420" height="760"></canvas>
     <div id="overlay">Your Score: 0</div>
+    <div id="overlay2">Lives: 3</div>
 
     <div class="menuWrap">
       <span id="transparent" class="toHide"></span>
@@ -33,15 +34,23 @@
       <button id="start-button" class="box-shadow toHide">Start Game</button>
     </div>
 
-    <div>
-      <span id="gameOver"></span>
+    <div class="end">
+      <span id="transparent2" class="toShow"></span>
+      <span id="gameOver" class="toShow"></span>
+      <p class="toShow">So Sorry to tell you, but you are game over.
+        <br> Let's have a look whether you managed to grab
+        a place in the highscore. </p>
+      <button id="restart-button" class="box-shadow toShow">Restart Game</button>
+
+
+
 
     </div>
 
 
 
   </div>
-
+  <script type="text/javascript" src="js/score.js"></script>
   <script type="text/javascript" src="js/Treasure.js"></script>
   <script type="text/javascript" src="js/Island.js"></script>
   <script type="text/javascript" src="js/Player.js"></script>

@@ -1,3 +1,4 @@
+//just some variables to use
 var canvas = document.querySelector("canvas");
 var ctx = canvas.getContext("2d");
 var sound1 = new Audio("audio/sound1.mp3");
@@ -8,6 +9,8 @@ var crash = new Audio("audio/crash.ogg");
 var width = canvas.width;
 var height = canvas.height;
 var debug = false;
+
+//array with islandpictures
 var island = [
   "images/gras2.png",
   "images/gras3.png",
@@ -17,6 +20,7 @@ var island = [
   "images/gras7.png"
 ];
 
+//array with treasurepictures
 var points = [
   { url: "images/treasure.png", width: 66, height: 70, type: "addPoints" },
   { url: "images/flower.png", width: 77, height: 100, type: "addPoints" },
@@ -25,9 +29,11 @@ var points = [
   { url: "images/stone.png", width: 128, height: 74, type: "reducePoints" }
 ];
 
+//counter and lives
 var counter = 0;
 var lives = 3;
 
+//variables for the background, deer, islands and treasures that are getting filled later
 var bg = new Background(ctx, "images/Background.png", 0.5);
 var player = new Player(ctx, "images/deer.png");
 var grassBackgrounds = [
@@ -46,8 +52,10 @@ var treasure = [
     points[0].type
   )
 ];
+
 var gameInterval;
 
+//function to start the game that is getting called, when you lose a life
 function startGame() {
   document.onkeydown = function(e) {
     switch (e.keyCode) {
@@ -74,20 +82,22 @@ function startGame() {
   }, 1000 / 60);
 }
 
+//function to stop the game if you need to
 function stopGame() {
   clearInterval(gameInterval);
 }
 
+//function to draw everything
 function drawEverything() {
   ctx.clearRect(0, 0, width, height);
   bg.draw();
 
   treasure.forEach(treasureChest => treasureChest.draw());
-  // treasure.forEach(treasureChest => treasureChest.checkTouchingIsland());
   grassBackgrounds.forEach(grassBackground => grassBackground.draw());
   player.draw();
 }
 
+//function that updates everything that is changing/going on in the code
 function update() {
   bg.update();
   player.update();
@@ -99,6 +109,7 @@ function update() {
     newGrass();
   }
 
+  //when the player loses a life this is happening
   if (player.y >= canvas.height) {
     falling.play();
     console.log("game over");
@@ -106,6 +117,7 @@ function update() {
     lives--;
     stopGame();
 
+    //if he still has some lives left
     if (lives > 0) {
       bg = new Background(ctx, "images/Background.png", 0.5);
       player = new Player(ctx, "images/deer.png");
@@ -127,6 +139,7 @@ function update() {
       ];
       startGame();
     } else {
+      //if ran out of lives
       setTimeout(function() {
         var elementsToShow = document.querySelectorAll(".toShow");
 
@@ -138,24 +151,27 @@ function update() {
     document.getElementById("overlay2").innerHTML = "Lives:" + " " + lives;
   }
 
+  //create a new treasure when the last treasure is 300px away from the border of the canvas
   if (
     treasure.length === 0 ||
     treasure[treasure.length - 1].x + treasure[treasure.length - 1].width <=
       canvas.width - 300
   ) {
-    console.log("Creating a new treasure");
     newTreasure();
   }
 
+  //check wheter the player is collecting the treasure or not + add or remove points
   treasure = treasure.filter(function(money, i) {
     return player.checkTreasure(money) ? false : true;
   });
 
+  //check whether the player is landing on the island or not
   grassBackgrounds.forEach(function(grass, i) {
     player.checkBottom(grass);
   });
 }
 
+//create new islandelement and push it into the grassbackgrounds array
 function newGrass() {
   var randomNumber = Math.floor(Math.random() * Math.floor(island.length));
   var randomHeight = Math.floor(Math.random() * (600 - 400 + 1) + 400);
@@ -164,6 +180,7 @@ function newGrass() {
   );
 }
 
+//create new treasureelement and push it into the treasure array
 function newTreasure() {
   var randomNumber = Math.floor(Math.random() * Math.floor(points.length));
   var randomHeight = Math.floor(
@@ -184,6 +201,7 @@ function newTreasure() {
   );
 }
 
+//what happens when the window is loaded
 window.onload = function() {
   gameInterval = setInterval(function() {
     ctx.clearRect(0, 0, width, height);
@@ -193,6 +211,7 @@ window.onload = function() {
   }, 1000 / 60);
 };
 
+//if you click on the startbutton then..
 document.getElementById("start-button").addEventListener("click", function() {
   clearInterval(gameInterval);
   var element = document.getElementById("start-button");
@@ -207,6 +226,7 @@ document.getElementById("start-button").addEventListener("click", function() {
   }, 400);
 });
 
+//if you click on the restartbutton then..
 document.getElementById("restart-button").addEventListener("click", function() {
   var element = document.getElementById("restart-button");
   element.classList.toggle("box-shadow");

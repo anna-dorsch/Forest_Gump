@@ -1,3 +1,4 @@
+//class to implement a player
 class Player {
   constructor(ctx, url) {
     this.ctx = ctx;
@@ -17,6 +18,7 @@ class Player {
     this.hasFallen = false;
   }
 
+  //that is the startposition of the player
   startPos() {
     {
       this.x = 60;
@@ -24,38 +26,43 @@ class Player {
     }
   }
 
+  //the center of the player is:
   center() {
     return {
       x: this.x + this.width / 2,
       y: this.y + this.height / 2
     };
   }
-
+  //the top of the player is:
   top() {
     return this.y;
   }
+  //the bottom of the player is:
   bottom() {
     return this.y + this.height;
   }
+  //the left of the player is:
   left() {
     return this.x;
   }
+  //the right of the player is:
   right() {
     return this.x + this.width;
   }
 
+  //if you move the player up, his position changes in this way
   moveUp() {
     this.y -= 10;
   }
-
+  //if you move the player to the left, his position changes in this way (is not implemented right now)
   moveLeft() {
     this.speedX -= 0.1;
   }
-
+  //if you move the player to the right, his position changes in this way
   moveRight() {
     this.speedX += 0.1;
   }
-
+  //when the player is jumping
   jump() {
     this.isJumping = true;
     this.speedY = -15;
@@ -63,6 +70,7 @@ class Player {
     // this.gravity = 0.1;
   }
 
+  //draw the player
   draw() {
     this.ctx.save();
     if (debug) {
@@ -74,7 +82,7 @@ class Player {
     this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     this.ctx.restore();
   }
-
+  //update the player
   update() {
     if (this.y < 0) {
       this.y = 2;
@@ -90,8 +98,6 @@ class Player {
       player.x = 0;
       console.log("next canvas");
     }
-
-    // this.newPo();
   }
 
   checkBottom(platform) {
@@ -114,7 +120,7 @@ class Player {
     ) {
       this.x = platform.right();
     }
-    // Collision
+    // Collision on top of the island
     if (
       this.bottom() > platform.top() &&
       platform.bottom() > this.top() &&
@@ -127,12 +133,8 @@ class Player {
       this.isJumping = false;
     }
   }
-  // if ((this.y + (this.height) < money.y ||
-  //        (this.y > money.y + (money.height)) ||
-  //        (this.x + (this.width) < money.x) ||
-  //        ( this.x > money.x + (money.width))) {
-  // }
-  // return crash;
+
+  //check if the player collcted the treasure
   checkTreasure(money) {
     if (
       this.y + this.height < money.y ||
@@ -140,12 +142,8 @@ class Player {
       this.x + this.width - 40 < money.x ||
       this.x > money.x + money.width
     ) {
-      // counter--;
-      // return false;
-      // } else if ((money.type = reducePoints)) {
-      // counter--;
-      //   return false;
     } else {
+      //no stone
       if (money.type === "addPoints") {
         counter = counter + 1;
         console.log("this", counter);
@@ -155,6 +153,7 @@ class Player {
         sound1.play();
         return true;
       } else {
+        //stone
         counter--;
         document.getElementById("overlay").innerHTML =
           "Your Score:" + " " + counter;
@@ -163,6 +162,7 @@ class Player {
       }
     }
   }
+
   // make collision so it stops when it touchs the surface of the platform
   newPo() {
     this.gravitySpeed += this.gravity;

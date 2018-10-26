@@ -1,3 +1,4 @@
+//calss to build a island
 class Island {
   constructor(ctx, url, x, y) {
     this.x = x;

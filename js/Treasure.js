@@ -1,3 +1,4 @@
+//class that is setting the informations of the treasures
 class Treasure {
   constructor(ctx, url, x, y, width, height, type) {
     this.height = height;

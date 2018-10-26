@@ -21,10 +21,6 @@
   /* display: block; */
 }
 
-/* #background {
-
-} */
-
 #start-button {
   margin: 550px 210px 100px 865px;
   width: 200px;
@@ -79,10 +75,6 @@
   position: relative;
 }
 
-/* #welcome {
-  margin: 200px, 285px, 200px, 785px;
-} */
-
 #welcome h1,
 p,
 #high-score h1 {
@@ -92,8 +84,6 @@ p,
 }
 
 #high-score h1 {
-  /* //hide the h1 */
-  visibility: 0;
   margin: 185px 760px 215px 255px;
   font-size: 40px;
   width: 350px;

@@ -15,6 +15,7 @@ function getHighScores() {
   return highScores;
 }
 
+//function to save the highscore locally
 function saveHighScore(counter, name) {
   var highScores = getHighScores();
   highScores.push({ counter: counter, name: name });

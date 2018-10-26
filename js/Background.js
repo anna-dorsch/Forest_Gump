@@ -1,3 +1,4 @@
+//class to draw a moving background
 class Background {
   constructor(ctx, url, speed, x) {
     this.ctx = ctx;

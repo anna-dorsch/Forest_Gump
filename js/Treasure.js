@@ -7,11 +7,7 @@ class Treasure {
     this.img = new Image();
     this.img.src = url;
     this.type = type;
-    // this.img.onload = () => {
-    //   this.width = this.img.width;
-    // };
     this.ctx = ctx;
-    //this.current = false;
   }
 
   top() {

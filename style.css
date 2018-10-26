@@ -92,6 +92,8 @@ p,
 }
 
 #high-score h1 {
+  /* //hide the h1 */
+  visibility: 0;
   margin: 185px 760px 215px 255px;
   font-size: 40px;
   width: 350px;
@@ -109,9 +111,9 @@ p,
 
 #welcome p {
   font-size: 25px;
-  margin: 270px 285px 130px 785px;
+  margin: 270px 285px 130px 755px;
   text-align: center;
-  width: 350px;
+  width: 400px;
   height: 200px;
 }
 
@@ -183,9 +185,9 @@ p,
 
 .end p {
   font-size: 25px;
-  margin: 270px 285px 130px 785px;
+  margin: 270px 285px 130px 810px;
   text-align: center;
-  width: 350px;
+  width: 300px;
   height: 200px;
   display: none;
 }

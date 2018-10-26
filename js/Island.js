@@ -48,5 +48,3 @@ class Island {
     this.x -= this.x;
   }
 }
-
-// var randomIsland = island[Math.floor(Math.random() * island.length)];

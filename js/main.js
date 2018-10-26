@@ -1,5 +1,3 @@
-console.log("hello Forest");
-
 var canvas = document.querySelector("canvas");
 var ctx = canvas.getContext("2d");
 var sound1 = new Audio("audio/sound1.mp3");
@@ -50,10 +48,6 @@ var treasure = [
 ];
 var gameInterval;
 
-// console.log(treasure.x);
-// var randomNumber = Math.floor(Math.random() * Math.floor(island.length));
-// grassBackgrounds.push(new Island(ctx, island[randomNumber]));
-
 function startGame() {
   document.onkeydown = function(e) {
     switch (e.keyCode) {
@@ -76,11 +70,6 @@ function startGame() {
   };
   gameInterval = setInterval(function() {
     update();
-    // if(player.hasFallen){
-    //   drawEverything();
-    //   player.hasFallen = false;
-    // }
-
     drawEverything();
   }, 1000 / 60);
 }
@@ -94,13 +83,13 @@ function drawEverything() {
   bg.draw();
 
   treasure.forEach(treasureChest => treasureChest.draw());
+  // treasure.forEach(treasureChest => treasureChest.checkTouchingIsland());
   grassBackgrounds.forEach(grassBackground => grassBackground.draw());
   player.draw();
 }
 
 function update() {
   bg.update();
-  //treasure.update();
   player.update();
   if (
     grassBackgrounds[grassBackgrounds.length - 1].x +
@@ -179,7 +168,7 @@ function newTreasure() {
   var randomNumber = Math.floor(Math.random() * Math.floor(points.length));
   var randomHeight = Math.floor(
     Math.random() *
-      (grassBackgrounds[grassBackgrounds.length - 1].y - 400 + 1) +
+      (grassBackgrounds[grassBackgrounds.length - 1].y - 100 - 400 + 1) +
       400
   );
   treasure.push(
@@ -227,30 +216,3 @@ document.getElementById("restart-button").addEventListener("click", function() {
     startGame();
   }, 600);
 });
-
-// var elementsToHide = document.querySelectorAll(".toHide");
-// for (var i = 0, max = elementsToHide.length; i < max; i++) {
-//   elementsToHide[i].style.display = "none";
-// }
-
-// document.getElementById("restart-button").addEventListener("click", function() {
-//   var element = document.getElementById("restart-button");
-//   element.classList.toggle("box-shadow");
-//   var elementsToShow = document.querySelectorAll(".toShow");
-
-//     for (var i = 0, max = elementsToShow.length; i < max; i++) {
-//       elementsToHide[i].style.display = "none";
-//     }
-//   }, 400);
-// })
-
-// $("start.button").click(function() {
-//   $("start.button").fadeOut("slow");
-// });
-
-// console.log(counter);
-
-// function checkCollision(){
-//   if (player)
-
-// }
